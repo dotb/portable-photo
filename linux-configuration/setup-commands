@@ -1,0 +1,4 @@
+apt-get upgrade
+adduser bradley
+sudo adduser bradley sudo
+apt-get install isc-dhcp-server
