@@ -7,13 +7,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 
+import com.squarepolka.portablephoto.service.StatusService;
+import com.squarepolka.portablephoto.entity.api.StatusResponse;
+
 @RestController
 public class PhotoController
 {
+	@Autowired
+	public StatusService statusService;
+	
 	@RequestMapping("/status")
 	@ResponseBody
-	public String auth()
+	public StatusResponse getStatus()
 	{
-		return "Hello";	
+		return statusService.getStatus();
 	}
 }
