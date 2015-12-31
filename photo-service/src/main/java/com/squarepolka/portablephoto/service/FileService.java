@@ -9,35 +9,34 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ByteArrayOutputStream;
+import java.io.FileReader;
 
 @Service
 public class FileService
 {
-	
-	public String readJson (String filename)
+
+	public byte[] readFile (String filePath)
 	{
-		ApplicationContext appContext =
-				new ClassPathXmlApplicationContext(new String[] {});
+		ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
 
-		Resource resource = appContext.getResource("classpath:json/"+filename);
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(filePath));
 
-		String jsonString = "";
-
-		try{
-			InputStream is;
-			is = resource.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-			String line;
-			while ((line = br.readLine()) != null) {
-				jsonString += line;
+			int readByte;
+			while ((readByte = br.read()) != -1)
+			{
+				byteArray.write(readByte);
 			}
+
 			br.close();
 		}
-		catch(IOException e){
+		catch(IOException e)
+		{
 			e.printStackTrace();
 		}
 
-		return jsonString;
+		return byteArray.toByteArray();
 	}
 }
