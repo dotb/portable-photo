@@ -3,3 +3,6 @@ sudo adduser bradley
 sudo adduser bradley sudo
 sudo apt-get install isc-dhcp-server
 sudo apt-get install imagemagick
+sudo apt-get install samba
+sudo smbpasswd -a bradley
+# add the bradley user to the 'users' group
