@@ -34,6 +34,6 @@ public class PhotoController
 	@ResponseBody
 	public byte[] getImage(@PathVariable String country, @PathVariable String city, @PathVariable String date, @PathVariable String file)
 	{
-		return imageService.getImage(country + "/" + city + "/" + date + "/" + file);
+		return imageService.getImage(country + "/" + city + "/" + date + "/" + file, file);
 	}
 }
